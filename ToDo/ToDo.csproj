@@ -21,4 +21,10 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Home\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Home\List.cshtml" />
+  </ItemGroup>
 </Project>

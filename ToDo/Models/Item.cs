@@ -9,11 +9,13 @@ namespace ToDo.Models
     {
         private int _id;
         private string _description;
+        //private string _Info;
 
         public Item(string Description, int Id = 0)
         {
             _id = Id;
             _description = Description;
+            //_info = Info;
         }
 
     
@@ -31,6 +33,16 @@ namespace ToDo.Models
                 return (idEquality && descriptionEquality);
             }
         }
+
+        //public void SetName(string name)
+        //{
+        //    _name = name;
+        //}
+
+        //public void GetName(){
+
+        //    return _name;
+        //}
 
         public void SetId(int Id)
         {

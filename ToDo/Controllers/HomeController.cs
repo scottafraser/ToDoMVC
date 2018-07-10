@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ToDo.Models;
 
 namespace ToDo.Controllers
+
 {
     public class HomeController : Controller
     {
@@ -31,5 +33,16 @@ namespace ToDo.Controllers
         {
             return View();
         }
+
+        [HttpGet("/list")]
+        public IActionResult List()
+        {
+            string name = Request.Query["select"];
+            Item newItem = new Item(name, 0);
+            newItem.Save();
+
+            return View(newItem);
+        }
     }
+
 }
