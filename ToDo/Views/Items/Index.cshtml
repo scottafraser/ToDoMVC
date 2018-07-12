@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form name="select" action="/list" method="post">
+    <div class="form-group">
+        <label for="itemInput">Example label</label>
+        <input type="text" name="new-item" class="form-control" id="itemInput">
+    </div>
+    <div class=form-group>       
+        Enter a due date:
+
+        <input type="date" name="date" class=form-control min="datetime-local"><br>
+    </div>
+  
+</form>

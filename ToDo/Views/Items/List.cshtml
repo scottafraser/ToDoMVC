@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="column">
+
+        @foreach (var item in Model)
+    {
+        <h4>@item.GetDescription() | <a href="/items/@item.GetId()/update">Edit</a></h4>
+        <h4>due date is @item.GetDate()</h4 >
+
+}
+
+
+        <a href="/home" class="btn btn-lg btn-default">Back</a>
+        <a href="/delete" class="btn btn-lg btn-default">Delete</a>
+    </div>
+</div>

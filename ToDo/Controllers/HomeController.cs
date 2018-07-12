@@ -8,41 +8,64 @@ using ToDo.Models;
 namespace ToDo.Controllers
 
 {
-    public class HomeController : Controller
+    public class ItemsController : Controller
     {
-        public IActionResult Index()
+        [HttpGet("/")]
+        public ActionResult Index()
         {
             return View();
         }
 
-        public IActionResult About()
+
+        [HttpGet("/home")]
+        public IActionResult Back()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
+            return View("Index");
         }
 
         [HttpGet("/list")]
         public IActionResult List()
         {
-            string name = Request.Query["select"];
-            Item newItem = new Item(name, 0);
-            newItem.Save();
+            return View();
+        }
 
-            return View(newItem);
+        [HttpPost("/list")]
+        public IActionResult Create()
+        {
+            Item newItem = new Item(Request.Form["new-item"], Request.Form["date"], 0);
+            newItem.Save();
+            List<Item> allItems = Item.GetAll();
+            return View("List", allItems);
+        }
+
+        [HttpGet("/delete")]
+        public IActionResult Delete()
+        {
+            Item.DeleteAll();
+
+            return View();
+        }
+
+        [HttpGet("/items/{id}")]
+        public ActionResult Details(int id)
+        {
+            Item item = Item.Find(id);
+            return View(item);
+        }
+
+        [HttpGet("/items/{id}/update")]
+        public ActionResult UpdateForm(int id)
+        {
+            Item thisItem = Item.Find(id);
+            return View(thisItem);
+        }
+
+        [HttpPost("/items/{id}/update")]
+        public ActionResult Update(int id)
+        {
+            Item thisItem = Item.Find(id);
+            thisItem.Edit(Request.Form["newname"]);
+            return RedirectToAction("Index");
         }
     }
-
 }

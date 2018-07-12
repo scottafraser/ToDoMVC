@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>To Do List</h1>
+<hr />
+<h2>Edit category: @Model.GetDescription()</h2>
+<form action="/items/@Model.GetId()/update" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="newname" value="@Model.GetDescription()">
+    <h4>
+        due date = @Model.GetDate()
+    </h4>
+    <button type="submit">Edit</button>
+</form>
+<h4><a href="/items">Return home</a></h4>

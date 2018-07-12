@@ -23,8 +23,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Home\List.cshtml" />
+    <Content Remove="Views\Home\Delete.cshtml" />
+    <Content Remove="Views\Home\Update.cshtml" />
+    <Content Remove="Views\Items\UpdateForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\Home\List.cshtml" />
+    <None Include="Views\Items\List.cshtml" />
+    <None Include="Views\Items\Delete.cshtml" />
+    <None Include="Views\Items\Update.cshtml" />
+    <None Include="Views\Items\UpdateForm.cshtml" />
   </ItemGroup>
 </Project>
